@@ -139,10 +139,9 @@ export default function Welcome() {
           },
         ]}
       >
-        <Text className="font-sans-bold text-5xl text-primary-500">BUZZLY</Text>
+        <Text className="font-sans-bold text-7xl text-primary-500">BUZZLY</Text>
       </Animated.View>
 
-      {/* Chữ BUZZLY thứ 2 */}
       <Animated.View
         style={[
           animatedStyle2,
@@ -152,7 +151,7 @@ export default function Welcome() {
           },
         ]}
       >
-        <Text className="font-sans-bold text-5xl text-primary-500">BUZZLY</Text>
+        <Text className="font-sans-bold text-7xl text-primary-500">BUZZLY</Text>
       </Animated.View>
 
       <Animated.View
@@ -164,7 +163,7 @@ export default function Welcome() {
           },
         ]}
       >
-        <Text className="font-sans-bold text-5xl text-primary-500">BUZZLY</Text>
+        <Text className="font-sans-bold text-7xl text-primary-500">BUZZLY</Text>
       </Animated.View>
 
       <Animated.View
@@ -176,7 +175,7 @@ export default function Welcome() {
           },
         ]}
       >
-        <Text className="font-sans-bold text-5xl text-primary-500">BUZZLY</Text>
+        <Text className="font-sans-bold text-7xl text-primary-500">BUZZLY</Text>
       </Animated.View>
 
       <Animated.View
@@ -188,7 +187,7 @@ export default function Welcome() {
           },
         ]}
       >
-        <Text className="font-sans-bold text-5xl text-primary-500">BUZZLY</Text>
+        <Text className="font-sans-bold text-7xl text-primary-500">BUZZLY</Text>
       </Animated.View>
     </View>
   );

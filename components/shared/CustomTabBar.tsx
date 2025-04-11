@@ -1,4 +1,3 @@
-// Import các icon từ Font Awesome
 import {
   faCircle,
   faClock,
@@ -7,9 +6,9 @@ import {
   faIcons,
 } from '@fortawesome/free-solid-svg-icons';
 import type { Route } from '@react-navigation/native';
-import type { CustomTabBarProps } from '@types/tab';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
+import type { CustomTabBarProps } from '../../types/tab';
 import TabIcon from './TabIcon';
 
 const styles = StyleSheet.create({

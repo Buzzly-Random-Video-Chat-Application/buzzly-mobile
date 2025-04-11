@@ -1,72 +1,108 @@
-// @components/shared/BottomSheetModal.tsx
-import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
-import { router } from 'expo-router';
-import { forwardRef, useCallback, useMemo } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import BottomSheet from '@gorhom/bottom-sheet';
+import { Portal } from '@gorhom/portal';
+import { forwardRef, useCallback, useMemo, useRef, useState } from 'react';
+import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 interface BottomSheetModalProps {
   onClose: () => void;
+  children: React.ReactNode;
+  height?: string;
 }
 
 const BottomSheetModal = forwardRef<BottomSheet, BottomSheetModalProps>(
-  ({ onClose }, ref) => {
-    const snapPoints = useMemo(() => ['30%', '70%'], []);
+  ({ onClose, children, height = '50%' }, ref) => {
+    const snapPoints = useMemo(() => [height], [height]);
+    const [isVisible, setIsVisible] = useState(false); // Bắt đầu với modal ẩn
+    const scrollViewRef = useRef<ScrollView>(null);
+    const isDragging = useRef(false);
 
     const handleSheetChanges = useCallback(
       (index: number) => {
         if (index === -1) {
+          setIsVisible(false);
           onClose();
+        } else {
+          setIsVisible(true);
         }
       },
       [onClose],
     );
 
-    const renderBackdrop = useCallback(
-      (props: any) => (
-        <BottomSheetBackdrop
-          {...props}
-          disappearsOnIndex={-1}
-          appearsOnIndex={0}
-          pressBehavior="close"
-        >
+    const handleAnimate = useCallback((_fromIndex: number, toIndex: number) => {
+      setIsVisible(toIndex !== -1);
+    }, []);
+
+    const handleScroll = useCallback(
+      (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        const scrollY = event.nativeEvent.contentOffset.y;
+        const contentHeight = event.nativeEvent.contentSize.height;
+
+        if (
+          contentHeight > 0 &&
+          scrollY < -0.1 * contentHeight &&
+          !isDragging.current
+        ) {
+          isDragging.current = true;
+          if (ref && 'current' in ref && ref.current) {
+            ref.current.close();
+          }
+        }
+      },
+      [ref],
+    );
+
+    const handleScrollEndDrag = useCallback(() => {
+      isDragging.current = false;
+    }, []);
+
+    return (
+      <Portal>
+        {isVisible && (
           <View
             style={[
               StyleSheet.absoluteFill,
-              { backgroundColor: 'rgba(0, 0, 0, 0.5)' }, // Overlay mờ thay cho BlurView
+              { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
             ]}
           />
-        </BottomSheetBackdrop>
-      ),
-      [],
-    );
-
-    return (
-      <BottomSheet
-        ref={ref}
-        index={-1}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}
-        enablePanDownToClose
-        backdropComponent={renderBackdrop}
-        backgroundStyle={{ backgroundColor: '#FFFFFF' }}
-        handleIndicatorStyle={{ backgroundColor: '#191A23' }}
-      >
-        <View className="flex-1 p-4">
-          <Text className="mb-4 font-sans-bold text-2xl">
-            Bottom Sheet Content
-          </Text>
-          <Text className="mb-4 font-sans-medium text-base">
-            This is a Bottom Sheet with a blurred background. You can drag it
-            down to close.
-          </Text>
-          <TouchableOpacity
-            onPress={() => router.push('/others/settings')}
-            className="items-center rounded-lg bg-dark-500 p-3"
+        )}
+        <BottomSheet
+          ref={ref}
+          index={0}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+          onAnimate={handleAnimate}
+          enablePanDownToClose
+          backgroundStyle={{
+            backgroundColor: '#191A23',
+            borderTopLeftRadius: 24,
+            borderTopRightRadius: 24,
+          }}
+          handleComponent={() => null}
+          style={{
+            borderTopLeftRadius: 24,
+            borderTopRightRadius: 24,
+            overflow: 'hidden',
+          }}
+        >
+          <ScrollView
+            ref={scrollViewRef}
+            style={{ flex: 1 }}
+            contentContainerStyle={{
+              flexGrow: 1,
+              padding: 0,
+              borderTopLeftRadius: 24,
+              borderTopRightRadius: 24,
+            }}
+            showsVerticalScrollIndicator={false}
+            onScroll={handleScroll}
+            onScrollEndDrag={handleScrollEndDrag}
+            scrollEventThrottle={16}
           >
-            <Text className="text-white font-sans-medium">Go to Settings</Text>
-          </TouchableOpacity>
-        </View>
-      </BottomSheet>
+            {children}
+          </ScrollView>
+        </BottomSheet>
+      </Portal>
     );
   },
 );

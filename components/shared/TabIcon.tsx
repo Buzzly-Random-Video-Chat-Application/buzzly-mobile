@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import type { TabIconProps } from '@types/tab';
 import type { StyleProp, TextStyle } from 'react-native';
 import { Text, View } from 'react-native';
+
+import type { TabIconProps } from '../../types/tab';
 
 const TabIcon = ({ icon, color, name, focused }: TabIconProps) => {
   const textStyle: StyleProp<TextStyle> = { color };
