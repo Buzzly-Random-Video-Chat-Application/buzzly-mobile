@@ -1,4 +1,3 @@
-// app/others/_layout.tsx
 import {
   faBoxArchive,
   faChevronLeft,
@@ -7,9 +6,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { router, Stack } from 'expo-router';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 export default function OthersLayout() {
+  const avatarUrl =
+    'https://res.cloudinary.com/dj8tkuzxz/image/upload/v1744003085/knibkshgqmr6f0pii1tf.jpg';
+
   return (
     <Stack>
       <Stack.Screen
@@ -140,6 +142,41 @@ export default function OthersLayout() {
             fontFamily: 'SpaceGrotesk-Bold',
             fontSize: 18,
           },
+        }}
+      />
+      <Stack.Screen
+        name="chatting"
+        options={{
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              style={{ marginLeft: 10 }}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} size={18} color="#191A23" />
+            </TouchableOpacity>
+          ),
+          headerTitle: () => (
+            <View className="flex-row items-center">
+              <Image
+                source={{ uri: avatarUrl }}
+                className="mr-2 h-8 w-8 rounded-full"
+                resizeMode="cover"
+              />
+              <Text className="font-sans-bold text-lg text-dark-500">
+                Clarzi
+              </Text>
+            </View>
+          ),
+          headerRight: () => (
+            <TouchableOpacity style={{ marginRight: 10 }} onPress={() => {}}>
+              <FontAwesomeIcon
+                icon={faEllipsisVertical}
+                size={18}
+                color="#191A23"
+              />
+            </TouchableOpacity>
+          ),
         }}
       />
     </Stack>

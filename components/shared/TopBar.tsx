@@ -1,4 +1,4 @@
-import ProfileContent from '@components/others/profile-content';
+import ProfileContent from '@components/others/ProfileContent';
 import { images } from '@constants/image';
 import {
   faBell,
@@ -63,9 +63,7 @@ const TopBar = ({
             className="flex-row items-center justify-center rounded-full bg-dark-500 px-3 py-2"
           >
             <FontAwesomeIcon icon={faGem} size={18} color="#B9FF66" />
-            <Text className="ml-2 font-sans-medium text-white-50">
-              Cửa hàng
-            </Text>
+            <Text className="ml-2 font-sans-medium text-white-50">Store</Text>
           </TouchableOpacity>
 
           {(screenName === 'live' ||
