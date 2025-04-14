@@ -7,8 +7,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import type { Route } from '@react-navigation/native';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import type { CustomTabBarProps } from 'tab';
 
-import type { CustomTabBarProps } from '../../types/tab';
 import TabIcon from './TabIcon';
 
 const styles = StyleSheet.create({

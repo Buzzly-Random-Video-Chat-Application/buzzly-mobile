@@ -1,93 +1,4 @@
-// import { icons } from '@constants/icon';
-// import {
-//   faChevronRight,
-//   faCloudSun,
-//   faCopy,
-// } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-// import { Image, Text, View } from 'react-native';
-
-// export default function ProfileContent() {
-//   return (
-//     <View
-//       style={{
-//         flex: 1,
-//         flexDirection: 'column',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         borderTopLeftRadius: 24,
-//         borderTopRightRadius: 24,
-//       }}
-//     >
-//       <Image
-//         source={{
-//           uri: 'https://res.cloudinary.com/dj8tkuzxz/image/upload/v1744003085/knibkshgqmr6f0pii1tf.jpg',
-//         }}
-//         style={{
-//           width: '100%',
-//           height: 500,
-//           borderTopLeftRadius: 24,
-//           borderTopRightRadius: 24,
-//         }}
-//       />
-
-//       <View className="flex-column w-[100%] items-start justify-center gap-4 p-4">
-//         <View className="flex-column items-start justify-center">
-//           <Text className="font-sans-medium text-2xl text-white-50">
-//             Nguyen Quoc Thang
-//           </Text>
-//           <View className="mt-2 flex-row items-start justify-start rounded-full bg-gray-500 px-2 py-1">
-//             <Text className="font-sans-semibold text-gray-200">Code: </Text>
-//             <Text className="mr-2 font-sans-semibold text-gray-200">
-//               8eqrqtumpig1i
-//             </Text>
-//             <FontAwesomeIcon icon={faCopy} size={16} color="#B9FF66" />
-//           </View>
-//         </View>
-
-//         <View className="flex-column items-start justify-center gap-1">
-//           <View className="flex-row items-center justify-start">
-//             <Text className="mr-4 font-sans-semibold text-gray-200">ID</Text>
-//             <Text className="mr-2 font-sans-semibold text-gray-200">
-//               Create your Buzzly ID
-//             </Text>
-//             <FontAwesomeIcon icon={faChevronRight} size={10} color="#B9FF66" />
-//           </View>
-
-//           <View className="flex-row items-center justify-start">
-//             <icons.vietnam />
-//             <Text className="ml-4 mr-2 font-sans-semibold text-gray-200">
-//               Viet Nam
-//             </Text>
-//             <FontAwesomeIcon icon={faChevronRight} size={10} color="#B9FF66" />
-//           </View>
-
-//           <View className="flex-row items-center justify-start">
-//             <FontAwesomeIcon
-//               icon={faCloudSun}
-//               size={16}
-//               color="#FFFFFF"
-//               style={{ marginRight: 16 }}
-//             />
-//             <Text className="mr-2 font-sans-semibold text-gray-200">00:00</Text>
-//           </View>
-//         </View>
-//       </View>
-
-//       <View className="mb-4 h-[0.5px] w-[85%] bg-gray-50" />
-
-//       <View className="w-[100%] flex-col items-center justify-center gap-4">
-//         <Text className="w-[85%] font-sans-medium text-gray-300">
-//           Track your progress towards the Buzzly Badge
-//         </Text>
-//         <View className="h-[100px] w-[85%] rounded-lg bg-white-50" />
-//       </View>
-
-//       <View className="my-5 h-[1px] w-[85%] bg-gray-50" />
-//     </View>
-//   );
-// }
-
+import { COLOR } from '@constants/color';
 import { icons } from '@constants/icon';
 import {
   faChevronRight,
@@ -96,14 +7,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-
-const COLORS = {
-  primary: '#B9FF66',
-  background: '#191A23',
-  textPrimary: '#FFFFFF',
-  textSecondary: '#A1A1AA',
-  divider: '#3F3F46',
-};
 
 export default function ProfileContent() {
   const handleCopyCode = () => {
@@ -122,7 +25,7 @@ export default function ProfileContent() {
   };
 
   return (
-    <View className="flex-1 bg-[#191A23]">
+    <View className="flex-1 bg-dark-500">
       {/* Hình ảnh bìa */}
       <Image
         source={{
@@ -146,7 +49,7 @@ export default function ProfileContent() {
             8eqrqtumpig1i
           </Text>
           <TouchableOpacity onPress={handleCopyCode}>
-            <FontAwesomeIcon icon={faCopy} size={16} color={COLORS.primary} />
+            <FontAwesomeIcon icon={faCopy} size={16} color={COLOR.PRIMARY} />
           </TouchableOpacity>
         </View>
 
@@ -162,7 +65,7 @@ export default function ProfileContent() {
             <FontAwesomeIcon
               icon={faChevronRight}
               size={10}
-              color={COLORS.primary}
+              color={COLOR.PRIMARY}
             />
           </TouchableOpacity>
 
@@ -179,7 +82,7 @@ export default function ProfileContent() {
             <FontAwesomeIcon
               icon={faChevronRight}
               size={10}
-              color={COLORS.primary}
+              color={COLOR.PRIMARY}
             />
           </TouchableOpacity>
 
@@ -188,7 +91,7 @@ export default function ProfileContent() {
               <FontAwesomeIcon
                 icon={faCloudSun}
                 size={16}
-                color={COLORS.textPrimary}
+                color={COLOR.PRIMARY}
                 style={{ width: 40 }}
               />
             </View>
@@ -201,20 +104,42 @@ export default function ProfileContent() {
       <View className="mx-4 my-6 h-px bg-gray-600" />
 
       {/* Phần tiến trình Buzzly Badge */}
-      <View className="mb-6 px-4">
+      <View className="mb-2 px-4">
         <Text className="mb-3 font-sans-medium text-gray-400">
           Track your progress towards the Buzzly Badge
         </Text>
         <View className="rounded-lg bg-gray-700 p-4">
           <View className="h-2 overflow-hidden rounded-full bg-gray-500">
             <View
-              className="h-full bg-[#B9FF66]"
+              className="h-full bg-primary-500"
               style={{ width: '60%' }} // Giả sử tiến trình 60%
             />
           </View>
           <Text className="mt-2 font-sans-semibold text-gray-300">
             60/100 points
           </Text>
+        </View>
+      </View>
+
+      <View className="flex-column my-6 items-start justify-between px-4">
+        <Text className="mb-3 font-sans-medium text-gray-400">My Hashtag</Text>
+
+        <TouchableOpacity className="flex-row items-center justify-between rounded-full bg-blue-50 px-4 py-2">
+          <Text className="mr-2 w-fit font-sans-semibold text-blue-500">
+            #Hello
+          </Text>
+          <FontAwesomeIcon icon={faChevronRight} size={10} color={COLOR.BLUE} />
+        </TouchableOpacity>
+      </View>
+
+      <View className="flex-column mb-12 items-start justify-between px-4">
+        <Text className="mb-3 font-sans-medium text-gray-400">My Benefits</Text>
+
+        <View className="w-full flex-row items-center justify-between">
+          <icons.benefit1 width={80} height={80} />
+          <icons.benefit2 width={80} height={80} />
+          <icons.benefit3 width={80} height={80} />
+          <icons.benefit4 width={80} height={80} />
         </View>
       </View>
     </View>

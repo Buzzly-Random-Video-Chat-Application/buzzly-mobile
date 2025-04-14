@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import type BottomSheet from '@gorhom/bottom-sheet';
 import { router } from 'expo-router';
-import { useRef, useState } from 'react'; // Thêm useState
+import { useRef, useState } from 'react';
 import type { ImageSourcePropType } from 'react-native';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
@@ -34,7 +34,7 @@ const TopBar = ({
       : images.avatar_default;
 
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Thêm trạng thái
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openBottomSheet = () => {
     setIsModalOpen(true);
@@ -112,7 +112,7 @@ const TopBar = ({
         </View>
       </View>
 
-      {isModalOpen && ( // Chỉ render khi modal cần mở
+      {isModalOpen && (
         <BottomSheetModal
           ref={bottomSheetRef}
           onClose={closeBottomSheet}

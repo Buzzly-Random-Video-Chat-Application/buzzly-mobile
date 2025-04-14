@@ -4,7 +4,7 @@
     "slug": "buzzly-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/svgs/logo.svg",
     "userInterfaceStyle": "light",
     "scheme": "myapp",
     "splash": {

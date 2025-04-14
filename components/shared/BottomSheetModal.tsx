@@ -74,7 +74,7 @@ const BottomSheetModal = forwardRef<BottomSheet, BottomSheetModalProps>(
           onAnimate={handleAnimate}
           enablePanDownToClose
           backgroundStyle={{
-            backgroundColor: '#191A23',
+            backgroundColor: '#191A23E6',
             borderTopLeftRadius: 24,
             borderTopRightRadius: 24,
           }}

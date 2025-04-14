@@ -12,7 +12,7 @@ import Animated, {
 export default function Welcome() {
   const { height } = Dimensions.get('window');
   const blockHeight = height / 5;
-  const spacing = height / 8;
+  const spacing = height / 6;
 
   const centerPosition = blockHeight * 2.5;
 
