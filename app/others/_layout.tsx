@@ -182,7 +182,7 @@ export default function OthersLayout() {
           name="notification"
           options={{
             headerShown: true,
-            title: 'Notifications',
+            title: '',
             headerLeft: () => (
               <TouchableOpacity
                 onPress={() => router.back()}
@@ -199,6 +199,9 @@ export default function OthersLayout() {
             headerTitleStyle: {
               fontFamily: 'SpaceGrotesk-Bold',
               fontSize: 18,
+            },
+            headerStyle: {
+              backgroundColor: 'transparent',
             },
           }}
         />
