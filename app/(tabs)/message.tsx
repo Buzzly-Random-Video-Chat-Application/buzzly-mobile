@@ -1,6 +1,7 @@
 import FollowMessageCard from '@components/message/FollowMessageCard';
 import MessageCard from '@components/message/MessageCard';
 import CustomButton from '@components/shared/CustomButton';
+import TopBar from '@components/shared/TopBar';
 import { messages } from '@constants/app';
 import { router } from 'expo-router';
 import { SafeAreaView, ScrollView, Text, View } from 'react-native';
@@ -8,7 +9,7 @@ import { SafeAreaView, ScrollView, Text, View } from 'react-native';
 export default function Message() {
   return (
     <SafeAreaView className="bg-white flex-1">
-      <ScrollView className="flex-1 px-4">
+      <ScrollView className="flex-1 px-4 py-10">
         <Text className="text-black mb-6 mt-4 font-sans-bold text-3xl">
           Message
         </Text>
@@ -73,6 +74,9 @@ export default function Message() {
           </View>
         )}
       </ScrollView>
+      <View className="absolute inset-x-0 top-0 z-10">
+        <TopBar notificationCount={5} screenName="video-chat" />
+      </View>
     </SafeAreaView>
   );
 }

@@ -47,7 +47,7 @@ const TopBar = ({
   };
 
   return (
-    <SafeAreaView edges={['top']}>
+    <SafeAreaView edges={['top']} style={{ backgroundColor: 'transparent' }}>
       <View className="flex-row items-center justify-between px-4">
         <TouchableOpacity onPress={openBottomSheet}>
           <Image
