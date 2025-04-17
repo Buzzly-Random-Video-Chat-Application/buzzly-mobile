@@ -3,7 +3,14 @@ import benefit2 from '@assets/svgs/benefit-2.svg';
 import benefit3 from '@assets/svgs/benefit-3.svg';
 import benefit4 from '@assets/svgs/benefit-4.svg';
 import chatting from '@assets/svgs/chatting-1.svg';
+import chevronDown from '@assets/svgs/chevron-down.svg';
+import chevronUp from '@assets/svgs/chevron-up.svg';
 import china from '@assets/svgs/China.svg';
+import earth from '@assets/svgs/earth.svg';
+import gender from '@assets/svgs/gender.svg';
+import both from '@assets/svgs/gender-both.svg';
+import female from '@assets/svgs/gender-female.svg';
+import male from '@assets/svgs/gender-male.svg';
 import germany from '@assets/svgs/Germany.svg';
 import history from '@assets/svgs/history.svg';
 import india from '@assets/svgs/India.svg';
@@ -39,4 +46,14 @@ export const icons = {
   benefit2,
   benefit3,
   benefit4,
+
+  gender,
+  earth,
+
+  chevronDown,
+  chevronUp,
+
+  male,
+  female,
+  both,
 };

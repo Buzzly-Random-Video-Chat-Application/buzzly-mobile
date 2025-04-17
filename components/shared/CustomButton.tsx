@@ -6,7 +6,8 @@ interface CustomButtonProps {
   full: boolean;
   category?: 'default' | 'text' | 'outlined' | 'primary' | 'secondary';
   shape?: 'round' | 'square' | 'pill';
-  icon?: React.ReactNode;
+  prefixIcon?: React.ReactNode;
+  suffixIcon?: React.ReactNode;
   size?: 'small' | 'medium' | 'large';
   children: React.ReactNode;
   disabled?: boolean;
@@ -18,7 +19,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   full,
   category = 'default',
   shape = 'round',
-  icon,
+  prefixIcon,
+  suffixIcon,
   size = 'medium',
   children,
   disabled = false,
@@ -158,7 +160,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     <TouchableOpacity
       className="flex-row items-center justify-center"
       style={[
-        full === true ? { width: '100%' } : { width: 'auto' },
+        full === true ? { flex: 1 } : { width: 'auto' },
         {
           paddingHorizontal: 32,
           paddingVertical: 16,
@@ -175,13 +177,14 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       disabled={disabled}
       activeOpacity={0.8}
     >
-      {icon && <View className="mr-2">{icon}</View>}
+      {prefixIcon && <View className="mr-2">{prefixIcon}</View>}
       <Text
         className="text-center font-sans-medium"
         style={[sizeStyles.textStyle, getTextStyles(), { fontWeight: '600' }]}
       >
         {children}
       </Text>
+      {prefixIcon && <View className="ml-2">{suffixIcon}</View>}
     </TouchableOpacity>
   );
 };

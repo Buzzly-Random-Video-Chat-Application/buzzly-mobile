@@ -48,9 +48,7 @@ export default function History() {
           </View>
         </View>
       </ScrollView>
-      <View className="absolute inset-x-0 top-0 z-10">
-        <TopBar notificationCount={5} screenName="video-chat" />
-      </View>
+      <TopBar notificationCount={5} screenName="video-chat" />
     </SafeAreaView>
   );
 }

@@ -47,81 +47,85 @@ const TopBar = ({
   };
 
   return (
-    <SafeAreaView edges={['top']} style={{ backgroundColor: 'transparent' }}>
-      <View className="flex-row items-center justify-between px-4">
-        <TouchableOpacity onPress={openBottomSheet}>
-          <Image
-            source={avatarSource}
-            className="h-10 w-10 rounded-full"
-            resizeMode="cover"
-          />
-        </TouchableOpacity>
-
-        <View className="flex-row items-center gap-4">
-          <TouchableOpacity
-            onPress={() => router.push('/others/store')}
-            className="flex-row items-center justify-center rounded-full bg-dark-500 px-3 py-2"
-          >
-            <FontAwesomeIcon icon={faGem} size={18} color="#B9FF66" />
-            <Text className="ml-2 font-sans-medium text-white-50">Store</Text>
+    <View className="absolute inset-x-0 top-0 z-10">
+      <SafeAreaView edges={['top']} style={{ backgroundColor: 'transparent' }}>
+        <View className="flex-row items-center justify-between px-4">
+          <TouchableOpacity onPress={openBottomSheet}>
+            <Image
+              source={avatarSource}
+              className="h-10 w-10 rounded-full"
+              resizeMode="cover"
+            />
           </TouchableOpacity>
 
-          {(screenName === 'live' ||
-            screenName === 'history' ||
-            screenName === 'message') && (
-            <Animated.View
-              entering={FadeIn.duration(300)}
-              exiting={FadeOut.duration(300)}
+          <View className="flex-row items-center gap-4">
+            <TouchableOpacity
+              onPress={() => router.push('/others/store')}
+              className="flex-row items-center justify-center rounded-full bg-dark-500 px-3 py-2"
             >
-              <TouchableOpacity onPress={() => router.push('/others/archive')}>
-                <FontAwesomeIcon
-                  icon={faBoxArchive}
-                  size={24}
-                  color="#191A23"
-                />
-              </TouchableOpacity>
-            </Animated.View>
-          )}
+              <FontAwesomeIcon icon={faGem} size={18} color="#B9FF66" />
+              <Text className="ml-2 font-sans-medium text-white-50">Store</Text>
+            </TouchableOpacity>
 
-          {screenName === 'live' && (
-            <Animated.View
-              entering={FadeIn.duration(300)}
-              exiting={FadeOut.duration(300)}
-            >
-              <TouchableOpacity
-                onPress={() => router.push('/others/live-settings')}
+            {(screenName === 'live' ||
+              screenName === 'history' ||
+              screenName === 'message') && (
+              <Animated.View
+                entering={FadeIn.duration(300)}
+                exiting={FadeOut.duration(300)}
               >
-                <FontAwesomeIcon icon={faGear} size={24} color="#191A23" />
-              </TouchableOpacity>
-            </Animated.View>
-          )}
-
-          <TouchableOpacity
-            onPress={() => router.push('/others/notification')}
-            className="relative"
-          >
-            <FontAwesomeIcon icon={faBell} size={24} color="#191A23" />
-            {notificationCount > 0 && (
-              <View className="absolute -right-1 -top-2 h-4 w-4 items-center justify-center rounded-full bg-red-500">
-                <Text className="font-sans-semibold text-[10px] text-white-50">
-                  {notificationCount > 99 ? '99+' : notificationCount}
-                </Text>
-              </View>
+                <TouchableOpacity
+                  onPress={() => router.push('/others/archive')}
+                >
+                  <FontAwesomeIcon
+                    icon={faBoxArchive}
+                    size={24}
+                    color="#191A23"
+                  />
+                </TouchableOpacity>
+              </Animated.View>
             )}
-          </TouchableOpacity>
-        </View>
-      </View>
 
-      {isModalOpen && (
-        <BottomSheetModal
-          ref={bottomSheetRef}
-          onClose={closeBottomSheet}
-          height="85%"
-        >
-          <ProfileContent />
-        </BottomSheetModal>
-      )}
-    </SafeAreaView>
+            {screenName === 'live' && (
+              <Animated.View
+                entering={FadeIn.duration(300)}
+                exiting={FadeOut.duration(300)}
+              >
+                <TouchableOpacity
+                  onPress={() => router.push('/others/live-settings')}
+                >
+                  <FontAwesomeIcon icon={faGear} size={24} color="#191A23" />
+                </TouchableOpacity>
+              </Animated.View>
+            )}
+
+            <TouchableOpacity
+              onPress={() => router.push('/others/notification')}
+              className="relative"
+            >
+              <FontAwesomeIcon icon={faBell} size={24} color="#191A23" />
+              {notificationCount > 0 && (
+                <View className="absolute -right-1 -top-2 h-4 w-4 items-center justify-center rounded-full bg-red-500">
+                  <Text className="font-sans-semibold text-[10px] text-white-50">
+                    {notificationCount > 99 ? '99+' : notificationCount}
+                  </Text>
+                </View>
+              )}
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {isModalOpen && (
+          <BottomSheetModal
+            ref={bottomSheetRef}
+            onClose={closeBottomSheet}
+            height="85%"
+          >
+            <ProfileContent />
+          </BottomSheetModal>
+        )}
+      </SafeAreaView>
+    </View>
   );
 };
 
