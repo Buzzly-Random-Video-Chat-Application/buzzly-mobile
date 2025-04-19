@@ -145,7 +145,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     if (!disabled) return {};
     return {
       backgroundColor: '#E6E6E6',
-      borderColor: category === 'outlined' ? '#E6E6E6' : undefined,
+      borderColor: '#E6E6E6',
       shadowColor: '#191A23',
       shadowOffset: { width: 2, height: 2 },
       shadowOpacity: 1,

@@ -271,6 +271,78 @@ export default function OthersLayout() {
             },
           }}
         />
+        <Stack.Screen
+          name="edit-profile"
+          options={{
+            headerShown: true,
+            title: 'Edit Profile',
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => router.back()}
+                style={{ marginLeft: 10 }}
+              >
+                <FontAwesomeIcon
+                  icon={faChevronLeft}
+                  size={18}
+                  color="#191A23"
+                />
+              </TouchableOpacity>
+            ),
+            headerTintColor: '#191A23',
+            headerTitleStyle: {
+              fontFamily: 'SpaceGrotesk-Bold',
+              fontSize: 18,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="edit-nickname"
+          options={{
+            headerShown: true,
+            title: 'Edit Nickname',
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => router.back()}
+                style={{ marginLeft: 10 }}
+              >
+                <FontAwesomeIcon
+                  icon={faChevronLeft}
+                  size={18}
+                  color="#191A23"
+                />
+              </TouchableOpacity>
+            ),
+            headerTintColor: '#191A23',
+            headerTitleStyle: {
+              fontFamily: 'SpaceGrotesk-Bold',
+              fontSize: 18,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="buzzly-id"
+          options={{
+            headerShown: true,
+            title: 'Buzzly ID',
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => router.back()}
+                style={{ marginLeft: 10 }}
+              >
+                <FontAwesomeIcon
+                  icon={faChevronLeft}
+                  size={18}
+                  color="#191A23"
+                />
+              </TouchableOpacity>
+            ),
+            headerTintColor: '#191A23',
+            headerTitleStyle: {
+              fontFamily: 'SpaceGrotesk-Bold',
+              fontSize: 18,
+            },
+          }}
+        />
       </Stack>
 
       {isChattingSettingsModalOpen && (

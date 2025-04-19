@@ -5,8 +5,16 @@ import { Text, View } from 'react-native';
 
 import GenderButton from './GenderButton';
 
-export default function GenderSelectContent() {
-  const [selectedGender, setSelectedGender] = useState('Both');
+interface GenderSelectContentProps {
+  onClose: () => void;
+  initialSelected?: string;
+}
+
+export default function GenderSelectContent({
+  onClose,
+  initialSelected,
+}: GenderSelectContentProps) {
+  const [selectedGender, setSelectedGender] = useState(initialSelected);
 
   const handleSelectGender = (gender: string) => {
     setSelectedGender(gender);
@@ -45,7 +53,7 @@ export default function GenderSelectContent() {
           category="primary"
           shape="pill"
           size="medium"
-          onPress={() => {}}
+          onPress={onClose}
           disabled={false}
           full
         >
@@ -55,7 +63,7 @@ export default function GenderSelectContent() {
           category="default"
           shape="pill"
           size="medium"
-          onPress={() => {}}
+          onPress={onClose}
           disabled={false}
           full={false}
         >

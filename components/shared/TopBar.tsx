@@ -121,7 +121,7 @@ const TopBar = ({
             onClose={closeBottomSheet}
             height="85%"
           >
-            <ProfileContent />
+            <ProfileContent onClose={closeBottomSheet} />
           </BottomSheetModal>
         )}
       </SafeAreaView>

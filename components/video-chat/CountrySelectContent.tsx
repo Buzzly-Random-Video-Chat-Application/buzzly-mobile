@@ -5,12 +5,20 @@ import { Text, View } from 'react-native';
 
 import RadioButton from './RadioButton';
 
-export default function CountrySelectContent() {
+interface CountrySelectContentProps {
+  onClose: () => void;
+  initialSelected?: string;
+}
+
+export default function CountrySelectContent({
+  onClose,
+  initialSelected,
+}: CountrySelectContentProps) {
   const userCountryCode = 'VN';
   const userCountry = countries.find(
     (country) => country.code === userCountryCode,
   );
-  const [countrySelected, setCountrySelected] = useState('Balanced');
+  const [countrySelected, setCountrySelected] = useState(initialSelected);
 
   const handleCountryChange = (country: string) => {
     setCountrySelected(country);
@@ -55,7 +63,7 @@ export default function CountrySelectContent() {
           category="primary"
           shape="pill"
           size="medium"
-          onPress={() => {}}
+          onPress={onClose}
           disabled={false}
           full
         >
@@ -65,7 +73,7 @@ export default function CountrySelectContent() {
           category="default"
           shape="pill"
           size="medium"
-          onPress={() => {}}
+          onPress={onClose}
           disabled={false}
           full={false}
         >

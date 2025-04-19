@@ -34,7 +34,7 @@ export default function FilterButtonGroup() {
   };
 
   return (
-    <View className="absolute bottom-0 z-10 h-[20vh] w-full flex-row items-start justify-between rounded-t-3xl bg-dark-500 p-6">
+    <View className="absolute bottom-0 z-10 h-[20vh] w-full flex-row items-start justify-between rounded-t-3xl bg-dark-500 px-6 py-4">
       <CustomButton
         category="primary"
         shape="pill"
@@ -46,7 +46,6 @@ export default function FilterButtonGroup() {
       >
         Gender
       </CustomButton>
-
       <CustomButton
         category="primary"
         shape="pill"
@@ -58,24 +57,28 @@ export default function FilterButtonGroup() {
       >
         Country
       </CustomButton>
-
       {isGenderModalOpen && (
         <BottomSheetModal
           ref={genderModalRef}
           onClose={closeGenderModal}
           height="45%"
         >
-          <GenderSelectContent />
+          <GenderSelectContent
+            onClose={closeGenderModal}
+            initialSelected="Both"
+          />
         </BottomSheetModal>
       )}
-
       {isCountryModalOpen && (
         <BottomSheetModal
           ref={countryModalRef}
           onClose={closeCountryModal}
           height="75%"
         >
-          <CountrySelectContent />
+          <CountrySelectContent
+            onClose={closeCountryModal}
+            initialSelected="Balanced"
+          />
         </BottomSheetModal>
       )}
     </View>
