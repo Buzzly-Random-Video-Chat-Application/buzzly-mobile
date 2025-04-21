@@ -1,15 +1,13 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-unresolved */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
-    './assets/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './hooks/**.{js,ts,jsx,tsx}',
-    './navigations/**/*.{js,ts,jsx,tsx}',
-    './services/**/*.{js,ts,jsx,tsx}',
-    './types/**/*.{js,ts,jsx,tsx}',
-    './utils/**/*.{js,ts,jsx,tsx}',
+    './Main.tsx',
   ],
+  presets: [require('nativewind/preset')],
   theme: {
     extend: {
       screens: {
@@ -19,7 +17,6 @@ module.exports = {
         lg: '1200px',
         xl: '1536px',
       },
-
       colors: {
         primary: {
           50: '#F8FFF2',
@@ -142,7 +139,6 @@ module.exports = {
           900: '#003F6B',
         },
       },
-
       fontFamily: {
         sans: ['SpaceGrotesk-Regular', 'sans-serif'],
         'sans-bold': ['SpaceGrotesk-Bold', 'sans-serif'],
@@ -150,7 +146,6 @@ module.exports = {
         'sans-medium': ['SpaceGrotesk-Medium', 'sans-serif'],
         'sans-semibold': ['SpaceGrotesk-SemiBold', 'sans-serif'],
       },
-
       fontSize: {
         h1: '60px',
         h2: '40px',
@@ -185,7 +180,6 @@ module.exports = {
         widest: '0.03em',
         overline: '0.1em',
       },
-
       backgroundImage: {
         'gradient-1':
           'radial-gradient(12158.65% 140.68% at 99.42% 0%, #b9ff66 0%, #b9ff66 48.44%, #b9ff66 100%), radial-gradient(12158.65% 140.68% at 99.42% 0%, #9cd94f 0%, #a7e356 48.44%, #a2e255 100%)',

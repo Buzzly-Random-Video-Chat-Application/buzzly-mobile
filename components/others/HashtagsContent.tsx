@@ -117,7 +117,7 @@ export default function HashtagsContent({
         size="medium"
         onPress={handleConfirm}
         disabled={false}
-        full
+        full={false}
         style={{ marginBottom: 16 }}
       >
         Confirm

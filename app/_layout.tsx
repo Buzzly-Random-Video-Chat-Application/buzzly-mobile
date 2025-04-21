@@ -1,22 +1,23 @@
+import '../global.css';
+
 import { PortalProvider } from '@gorhom/portal';
 import { useCustomFonts } from '@hooks/useCustomFonts';
+import store from '@stores/store';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { NativeWindStyleSheet } from 'nativewind';
 import { useEffect } from 'react';
+import { Alert } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-NativeWindStyleSheet.setOutput({
-  default: 'native',
-});
+import Toast from 'react-native-toast-message';
+import { Provider } from 'react-redux';
 
 export default function RootLayout() {
   const { fontsLoaded, fontError } = useCustomFonts();
 
   useEffect(() => {
     if (fontError) {
-      console.error('Font loading error:', fontError);
+      Alert.alert('Font loading error:', fontError.message);
     }
 
     if (fontsLoaded) {
@@ -29,44 +30,47 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <PortalProvider>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <StatusBar />
-          <Stack>
-            <Stack.Screen
-              name="(auth)"
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="(tabs)"
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="index"
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="(splash-screens)"
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="others"
-              options={{
-                headerShown: false,
-              }}
-            />
-          </Stack>
-        </GestureHandlerRootView>
+        <SafeAreaProvider>
+          <Provider store={store}>
+            <StatusBar />
+            <Toast />
+            <Stack>
+              <Stack.Screen
+                name="(auth)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="(tabs)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="index"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="(splash-screens)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="others"
+                options={{
+                  headerShown: false,
+                }}
+              />
+            </Stack>
+          </Provider>
+        </SafeAreaProvider>
       </PortalProvider>
-    </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }

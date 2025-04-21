@@ -4,7 +4,7 @@
     "slug": "buzzly",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/svgs/logo.svg",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "scheme": "buzzly",
     "splash": {
@@ -15,7 +15,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.reactnativeboilerplate",
+      "bundleIdentifier": "com.buzzly.app",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Allows the app to access the photo library to select photos",
         "NSCameraUsageDescription": "Allows the app to access the camera for video chat and capturing photos",
@@ -27,7 +27,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.reactnativeboilerplate",
+      "package": "com.buzzly.app",
       "permissions": [
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
@@ -40,6 +40,7 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["@config-plugins/detox", "expo-router"]
+    "plugins": ["@config-plugins/detox", "expo-router"],
+    "newArchEnabled": true
   }
 }

@@ -13,7 +13,7 @@ interface BottomSheetModalProps {
 const BottomSheetModal = forwardRef<BottomSheet, BottomSheetModalProps>(
   ({ onClose, children, height = '50%' }, ref) => {
     const snapPoints = useMemo(() => [height], [height]);
-    const [isVisible, setIsVisible] = useState(false); // Bắt đầu với modal ẩn
+    const [isVisible, setIsVisible] = useState(false);
     const scrollViewRef = useRef<ScrollView>(null);
     const isDragging = useRef(false);
 

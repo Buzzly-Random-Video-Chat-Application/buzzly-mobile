@@ -12,9 +12,10 @@ import { Alert, TouchableOpacity, View } from 'react-native';
 
 interface SidebarProps {
   onCameraToggle: (isOpen: boolean) => void;
+  onToggleCameraFacing: () => void;
 }
 
-const Sidebar = ({ onCameraToggle }: SidebarProps) => {
+const Sidebar = ({ onCameraToggle, onToggleCameraFacing }: SidebarProps) => {
   const [openCamera, setOpenCamera] = useState(false);
 
   const requestCameraPermission = async () => {
@@ -51,10 +52,10 @@ const Sidebar = ({ onCameraToggle }: SidebarProps) => {
             <icons.splashCamera width={20} height={20} color="white" />
           )}
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onToggleCameraFacing} disabled={!openCamera}>
           <FontAwesomeIcon icon={faRotate} size={20} color="white" />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity disabled={!openCamera}>
           <FontAwesomeIcon icon={faSprayCanSparkles} size={20} color="white" />
         </TouchableOpacity>
         <View className="h-px w-full bg-white-50" />

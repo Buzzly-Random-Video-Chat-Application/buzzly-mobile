@@ -1,6 +1,8 @@
+import { useLoginMutation } from '@apis/authApi';
 import CustomButton from '@components/shared/CustomButton';
 import InputForm from '@components/shared/InputForm';
 import { Ionicons } from '@expo/vector-icons';
+import { useAppSelector } from '@stores/store';
 import { validateEmail, validatePassword } from '@utils/common';
 import { router } from 'expo-router';
 import { useState } from 'react';
@@ -10,29 +12,28 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [touched, setTouched] = useState({
     email: false,
     password: false,
   });
 
-  const handleSignIn = () => {
-    // const emailErrors = validateEmail(email);
-    // const passwordErrors = validatePassword(password);
+  const [login, { isLoading }] = useLoginMutation();
+  const { user } = useAppSelector((state) => state.user);
 
-    // if (emailErrors.length === 0 && passwordErrors.length === 0) {
-    //   console.log('Sign In with:', { email, password, rememberMe });
-    // } else {
-    //   console.log('Validation failed:', {
-    //     emailErrors,
-    //     passwordErrors,
-    //   });
-    //   setTouched({
-    //     email: true,
-    //     password: true,
-    //   });
-    // }
-    router.push('/video-chat');
+  const handleLogin = async () => {
+    if (!validateEmail(email).length && !validatePassword(password).length) {
+      console.log('Login attempt:', { email, password }); // Debug
+      try {
+        await login({ email, password }).unwrap();
+        router.replace('/video-chat');
+
+        console.log('Login successful:', user); // Debug
+      } catch (error) {
+        console.error('Login error:', error); // Debug
+      }
+    }
+
+    // router.replace('/video-chat');
   };
 
   return (
@@ -78,9 +79,9 @@ export default function SignIn() {
 
         <View className="mt-4 flex-row items-center justify-between">
           <View className="flex-row items-center gap-1">
-            <TouchableOpacity onPress={() => setRememberMe(!rememberMe)}>
+            <TouchableOpacity onPress={() => {}}>
               <Ionicons
-                name={rememberMe ? 'checkbox' : 'square-outline'}
+                name="square-outline"
                 size={20}
                 color="#9DA0A9"
                 className="mr-2"
@@ -88,7 +89,10 @@ export default function SignIn() {
             </TouchableOpacity>
             <Text className="font-sans-medium text-gray-500">Remember me</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => router.push('/(auth)/forgot-password')}
+            disabled={isLoading}
+          >
             <Text className="font-sans-semibold text-primary-600">
               Forgot password?
             </Text>
@@ -99,8 +103,12 @@ export default function SignIn() {
           category="secondary"
           shape="square"
           size="medium"
-          onPress={handleSignIn}
-          disabled={false}
+          onPress={handleLogin}
+          disabled={
+            isLoading ||
+            validateEmail(email).length > 0 ||
+            validatePassword(password).length > 0
+          }
           style={{ marginTop: 24 }}
           full={false}
         >
@@ -111,7 +119,10 @@ export default function SignIn() {
           <Text className="font-sans-regular text-gray-200">
             {`Don't have an account?`}{' '}
           </Text>
-          <TouchableOpacity onPress={() => router.push('/sign-up')}>
+          <TouchableOpacity
+            onPress={() => router.push('/(auth)/sign-up')}
+            disabled={isLoading}
+          >
             <Text className="font-sans-semibold text-primary-600">
               Register
             </Text>

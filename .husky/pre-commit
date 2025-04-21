@@ -1,5 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 . "$(dirname "$0")/_/husky.sh"
 
-# Disable concurent to run `check-types` after ESLint in lint-staged
+# Thêm PATH chứa npx
+export PATH=$PATH:/usr/local/bin
+
+# Disable concurrent to run `check-types` after ESLint in lint-staged
 cd "$(dirname "$0")/.." && npx lint-staged --concurrent false

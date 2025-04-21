@@ -21,7 +21,7 @@ export default function FilterButtonGroup() {
   };
   const closeGenderModal = () => {
     setIsGenderModalOpen(false);
-    genderModalRef.current?.expand();
+    genderModalRef.current?.close();
   };
 
   const openCountryModal = () => {
@@ -30,11 +30,11 @@ export default function FilterButtonGroup() {
   };
   const closeCountryModal = () => {
     setIsCountryModalOpen(false);
-    countryModalRef.current?.expand();
+    countryModalRef.current?.close();
   };
 
   return (
-    <View className="absolute bottom-0 z-10 h-[20vh] w-full flex-row items-start justify-between rounded-t-3xl bg-dark-500 px-6 py-4">
+    <View className="absolute bottom-0 z-10 h-[18vh] w-full flex-row items-start justify-between rounded-t-3xl bg-dark-500 px-8 py-4">
       <CustomButton
         category="primary"
         shape="pill"

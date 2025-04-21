@@ -61,7 +61,10 @@ export default function LanguagesContent({
             </View>
             <View className="mt-2">
               {selectedLanguages.map((language) => (
-                <View className="flex-row items-center justify-between py-3">
+                <View
+                  className="flex-row items-center justify-between py-3"
+                  key={language}
+                >
                   <View className="flex-row items-center">
                     <TouchableOpacity
                       className="mr-4 rounded-full bg-red-500 p-1"
@@ -111,7 +114,7 @@ export default function LanguagesContent({
         size="medium"
         onPress={handleConfirm}
         disabled={selectedLanguages.length === 0}
-        full
+        full={false}
         style={{ marginTop: 16, marginBottom: 16 }}
       >
         Confirm

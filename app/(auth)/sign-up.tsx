@@ -153,7 +153,7 @@ export default function SignUp() {
           onPress={handleSignUp}
           disabled={false}
           style={{ marginTop: 24 }}
-          full
+          full={false}
         >
           Register
         </CustomButton>

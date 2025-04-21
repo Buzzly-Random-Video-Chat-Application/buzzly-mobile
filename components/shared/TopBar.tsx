@@ -53,7 +53,7 @@ const TopBar = ({
           <TouchableOpacity onPress={openBottomSheet}>
             <Image
               source={avatarSource}
-              className="h-10 w-10 rounded-full"
+              className="size-10 rounded-full"
               resizeMode="cover"
             />
           </TouchableOpacity>
@@ -105,7 +105,7 @@ const TopBar = ({
             >
               <FontAwesomeIcon icon={faBell} size={24} color="#191A23" />
               {notificationCount > 0 && (
-                <View className="absolute -right-1 -top-2 h-4 w-4 items-center justify-center rounded-full bg-red-500">
+                <View className="absolute -right-1 -top-2 size-4 items-center justify-center rounded-full bg-red-500">
                   <Text className="font-sans-semibold text-[10px] text-white-50">
                     {notificationCount > 99 ? '99+' : notificationCount}
                   </Text>

@@ -206,7 +206,7 @@ export default function EditProfile() {
         <BottomSheetModal
           ref={hashtagRef}
           onClose={() => setIsModalHashtagsOpen(false)}
-          height="85%"
+          height="80%"
         >
           <HashtagsContent
             initialSelected={hashtags}
@@ -218,7 +218,7 @@ export default function EditProfile() {
         <BottomSheetModal
           ref={languageRef}
           onClose={() => setIsModalLanguagesOpen(false)}
-          height="85%"
+          height="90%"
         >
           <LanguagesContent
             initialSelected={selectedLanguages}
